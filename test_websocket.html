@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Crossfader Monitor</title>
+  </head>
+  <body>
+    <h1>Crossfader Value: <span id="value">0</span>%</h1>
+
+    <script>
+      const ws = new WebSocket("ws://localhost:8765");
+
+      ws.onmessage = function (event) {
+        const data = JSON.parse(event.data);
+        document.getElementById("value").textContent = data.crossfader;
+      };
+
+      ws.onclose = function () {
+        document.getElementById("value").textContent = "Disconnected";
+      };
+    </script>
+  </body>
+</html>

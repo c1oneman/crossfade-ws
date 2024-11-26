@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "midi-controller-monitor"
+version = "1.0.0"
+description = "A modern, real-time MIDI controller monitoring tool with WebSocket broadcasting capabilities"
+authors = ["Clayton Loneman <clayton@loneman.dev>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "midi_controller.py"}]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+mido = "^1.2.10"
+websockets = "^10.0"
+rich = "^10.0.0"
+typer = "^0.4.0"
+python-rtmidi = "^1.4.9"
+
+[tool.poetry.scripts]
+midi-monitor = "midi_controller:app"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api" 
